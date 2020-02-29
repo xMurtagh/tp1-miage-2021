@@ -76,82 +76,26 @@ IMPORTANT: Expliquer cette ligne de commande (y compris les options utilisées)
 
 * Quand les deux endpoints fonctionnent, faire un push vers Github et fermer le projet Eclipse (ne pas le supprimer).
 
-# Exercice 2 - Découpage en couches
+# Exercice 2 - Refactoring en architecture hexagonale
+_Temps estimé : 1 h_
+
+* Partir du projet `todolist-debut-ex2`
 
 
-1) Réorganiser le code dans les couches standards. 
+1) Réorganiser le code suivant les principes de l'architecture hexagonale : 
 
-Faire en sorte par exemple que divers frontends puisse récupérer les mails. Nous aurons dans ce TP un seul frontend : un CLI (ligne de commande) qui sera implémenté sous la forme d'une classe `ClientMail` avec `main()`. 
-Cette méthode main attend deux arguments : un booleen `production` qui précise si le mail doit vraiment être envoyé (`true`) ou si nous sommes en environnement de recette (`false`). Le second argument est le sujet du mail.
+image::images/HexagonalArchitecture__bbe7fy__.jpg[]
+Source : https://pragprog.com/magazines/2009-12/going-naked[Dan Haywood]
 
-Rappel : exemple de méthode main qui parse un boolean : 
-```
-public static void main(String[] args) {
-   production = Boolean.parseBoolean(args[0]);
-   ...		
-```
-Conception :
+* Les classes du domaine ne contiennent aucune technologie (pas de JPA/Hibernate, pas de Spring, ...) et contiennent  les régles de gestion (pas d'_anémemic domain_).
 
-![diag sequence](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/tp1-miage-2019/master/diag1.puml&ttt=1)
-![diag classe](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/tp1-miage-2019/master/diag1.puml&ttt=1)
+* Les aspects technologiques sont isolés dans des adaptateurs dédiées à chaque entrée ou sortie vers ou depuis le domaine.
 
-Prévoir une cinquième couche `commun` pour les éléments communs à toutes les couches comme les exceptions. 
+* Les échanges entre le domaine et les adaptateurs se fait via des "ports" (en Java, des interfaces)
 
-`MailSender` est une interface, le choix de l'implémentation est fait par l'application en fonction de la valeur du booléen `production`.
+* Ici et comme dans la plupart des architecture hexagonales, le domaine (ou "coeur" est découpés en deux couches : 
+  - la couche application qui expose des fonctionnalités 
+  - la couche domaine qui contient les entités (au sens DDD, pas au sens JPA)
 
-# Exercice 3 - Injection de dépendances avec Guice
-_Temps estimé : 20 mins_
+IMPORTANT: Qu'est ce que l'anti-pattern domaine anémique ? à quoi le reconnaît-on ? Est-il courant dans les modèles en couche classiques ?
 
-Point de synchro : repartir du projet fourni `mailreader-ex3-ini`
-
-Guice est le framework d'injection de dépendance en Java de Google. Il est léger et la configuration se fait en java (et non par fichier XML ou par annotations). Ses concurrents en Java sont principalement Spring Core et CDI dans le monde JEE. Ce pattern est également présent dans la plupart des languages, comme dans Symphony en PHP ou AngularJS en JavaScript.
-
-La méthode `configure()` de la classe `MailReaderModule` contient la configuration de Guice. C'est ici qu'on associe une interface à la classe contrète qui sera injectée. Exemple :
-```
-bind(MonInterface.class).to(MaClasseConcrete.class)
-```
-Il est bien sûr également possible d'injecter des classes concrètes (comme ici le `MailService`).
-
-1) Observer la méthode `ClientMail.main()` : elle charge la configuration et créé l'objet de haut niveau de l'arbre d'injection : un `InterpreteurLigneCommande`.
-
-2) L'objet `InterpreteurLigneCommande` a besoin d'un `MailService`. Lui injecter (injection par constructeur) via l’annotation (standard java) `@Inject`.
-
-3) Faire de même pour l'injection du `MailSender` dans le `MailService`.
-
-4) Compléter la méthode `configure()` de la classe `MailReaderModule` pour spécifier l'implémentation de `MailSender` à injecter.
-
-
-# Exercice 4 - TU
-_Temps estimé : 30 mins_
-
-1) Compléter les tests unitaires ou en écrire de nouveaux dans les test cases `MailTest` et `MailComparatorTest`. Enlever les annotations `@Ignore` s'il y en a.
-
-2) Exécuter vos tests si besoin (automatique si vous pratiquez le test continu avec infinitest).
-
-# Exercice 5 - BDD avec Cucumber-jvm
-_Temps estimé : 40 mins_
-
-Point de synchro : repartir du projet fourni `mailreader-ex5-ini`
-
-cucumber-jvm est l'implémentation java de cucumber, un framework de BDD (Behavioral Driven Development) très populaire. Il est existe d'autres : JBehave (l'original, très similaire), Concordion, JGiven ...
-
-Pour les besoins du TP, nous utilisons ici les notions de Scenario Outline, de Data Table et de Transformer permettant l'utilisation de données tabulaires et de formats custom. La syntaxe Cucumber/Gherkin est disponible ![ici](https://docs.cucumber.io/gherkin/reference/).
-
-1) Compléter la classe `MailComparaisonStep`
-2) Lancer le test `CucumberRunnerTest` en junit
-3) Ouvrir dans un navigateur `target/cucumber/index.html`
-4) Ajouter des cas de test dans la feature `trier_mail.feature`. Notez qu'aucun nouveau code n'a été nécessaire pour ajouter ces tests contrairement à un TU.
-5) Ecrire un scenario simple au format textuel et les steps correspondants.
-
-# Finalisation
-Veuillez finaliser, vérifier votre code et vos réponses après le TP. Vous avez deux semaines avant cloture du projet.
-
-# Cleanup
-Si vous le désirez, vous pourrez supprimer votre projet github mais pas avant fin juin (noté)
-
-
-
-
-
-
-http://localhost:8080/todos
