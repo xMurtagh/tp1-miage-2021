@@ -1,9 +1,7 @@
 package com.acme.todolist.domain;
 
 import java.time.Instant;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Un item à faire, immuable
@@ -12,10 +10,10 @@ import javax.persistence.Id;
  * @author bflorat
  *
  */
-@Entity
 public class TodoItem {
 	
-	@Id 
+	private static final String LATE = "[LATE!] ";
+		
 	private String id;
 	
 	private Instant time;
@@ -46,10 +44,25 @@ public class TodoItem {
 		this.time = time;
 		this.content = content;
 	}
-
+	
+	
+	
 	@Override
 	public String toString() {
 		return "TodoItem [id=" + id + ", time=" + time + ", content=" + content + "]";
+	}
+	
+	private boolean isLate() {
+		return Instant.now().isAfter(getTime().plus(1, ChronoUnit.DAYS)); 
+	}
+	
+	/**
+	 * RG 1 : si l'item a plus de 24h, ajouter dans le contenu une note "[LATE!]"
+	 * 
+	 * @return liste des items
+	 */
+	String finalContent() {
+		return isLate()? LATE+getContent() :  getContent();
 	}
 
 	@Override

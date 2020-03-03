@@ -1,20 +1,14 @@
 package com.acme.todolist.adapters.rest_api;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.acme.todolist.adapters.persistence.TodoItemRepository;
+import com.acme.todolist.application.service.GetTodoItemsQueryService;
+import com.acme.todolist.domain.TodoItem;
 
 /**
  * Le controlleur Spring MVC qui expose les endpoints REST
@@ -24,39 +18,29 @@ import com.acme.todolist.adapters.persistence.TodoItemRepository;
  */
 @RestController
 public class TodoListController {
-
-	private static final String LATE = "[LATE!]";
-	private TodoItemRepository todoItemRepository;
-
+	
+	
+	private GetTodoItemsQueryService getTodoItemsQueryService;
+	
+	
 	@Inject
-	public TodoListController(TodoItemRepository todoItemRepository) {
-		super();
-		this.todoItemRepository = todoItemRepository;
+	public TodoListController(GetTodoItemsQueryService getTodoItemsQueryService) {
+		this.getTodoItemsQueryService = getTodoItemsQueryService;
 	}
-
+	
+	/*
 	@PostMapping("/todos")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void createTodoItem(@RequestBody TodoItem todoItem) {
-		this.todoItemRepository.save(todoItem);
+		this.getTodoItemsQueryService.save(map todoItem);
 	}
+*/
+	
 
-	/**
-	 * RG 1 : si l'item a plus de 24h, ajouter dans le contenu une note "[LATE!]"
-	 * 
-	 * @return liste des items
-	 */
 	@GetMapping("/todos")
-	public List<TodoItem> todoItems() {
-		return this.todoItemRepository.findAll().stream()
-				.map(item -> new TodoItem(item.getId(), item.getTime(), finalContent(item)))
-				.collect(Collectors.toList());
-
+	public List<TodoItem> getAllTodoItems() {
+		return this.getTodoItemsQueryService.getAllTodoItems();
 	}
 
-	private String finalContent(TodoItem item) {
-		return (Instant.now().isAfter(item.getTime().plus(1, ChronoUnit.DAYS))) ? 
-				LATE + item.getContent()
-				: item.getContent();
-	}
 
 }

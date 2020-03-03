@@ -36,6 +36,8 @@ Veuillez *répondre aux questions de la feuille de TP juste sous la question* (e
 
 Nous fournissons trois projets Eclipse servant de base de travail aux exercices suivant. Cela permet un point de synchronisation de tous les étudiants à différents moments du TP. 
 
+TIP: fermez chaque projet Eclipse (sans supprimer les sources) avant de passer à l'exercice suivant pour éviter de confondre les sources.
+
 # Exercice 1 - Finaliser une API Spring Boot
 _Temps estimé : 1 h_
 

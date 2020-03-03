@@ -3,20 +3,18 @@ package com.acme.todolist.adapters.persistence;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
-
-import com.acme.todolist.domain.TodoItem;;
+import org.springframework.data.repository.CrudRepository;;
 
 /**
  * DAO d'accès aux TodoItem
  * @author bflorat
  *
  */
-public interface TodoItemRepository extends CrudRepository<TodoItem,String> {
+public interface TodoItemRepository extends CrudRepository<TodoItemJpaEntity,String> {
+			
+	List<TodoItemJpaEntity> findAll(); 
 	
-	List<TodoItem> findAll(); 
-	
-	Optional<TodoItem> findById(String id);
+	Optional<TodoItemJpaEntity> findById(String id);
 	
 	
 }
