@@ -38,22 +38,22 @@ Nous fournissons trois projets Eclipse servant de base de travail aux exercices 
 
 TIP: fermez chaque projet Eclipse (sans supprimer les sources) avant de passer à l'exercice suivant pour éviter de confondre les sources.
 
-# Exercice 1 - Finaliser une API Spring Boot
+# Exercice 1 - Etudier une API REST sans couches
 _Temps estimé : 1 h_
 
 * Observer le code du projet `todolist-debut-ex1`
 
-IMPORTANT: Que constatez-vous  en terme de découpage du code ? Imaginez un projet d'entreprise constitué de centaines de classes ainsi structuré. Que risque-t-il d'arriver ?
+IMPORTANT: [Question]  Que constatez-vous  en terme de découpage du code ? Imaginez un projet d'entreprise constitué de centaines de classes ainsi structuré. Que risque-t-il d'arriver ?
 
-IMPORTANT: Que se passe-t-il si l'on renomme une colonne de la base de donnée ?
+IMPORTANT: [Question]  Que se passe-t-il si l'on renomme une colonne de la base de donnée ?
 
-IMPORTANT: Où se trouve le code métier (voir la règle de gestion RG1) ? cette règle est-elle facilement testable par un test unitaire ? 
+IMPORTANT: [Question]  Où se trouve le code métier (voir la règle de gestion RG1) ? cette règle est-elle facilement testable par un test unitaire ? 
 
 * Lancer une base PostgreSQL en Docker :
 ```bash
 docker run --rm -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
-IMPORTANT: Expliquer cette ligne de commande (y compris les options utilisées)
+IMPORTANT: [Question]  Expliquer cette ligne de commande (y compris les options utilisées)
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
@@ -84,20 +84,23 @@ _Temps estimé : 1 h_
 * Partir du projet `todolist-debut-ex2`
 
 
-1) Réorganiser le code suivant les principes de l'architecture hexagonale : 
+NOTE: le projet a été refactoré suivant les principes de l'architecture hexagonale : 
 
-image::images/HexagonalArchitecture__bbe7fy__.jpg[]
-Source : https://pragprog.com/magazines/2009-12/going-naked[Dan Haywood]
+image::images/archi_hexagonale.png[]
+Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombergs]
 
-* Les classes du domaine ne contiennent aucune technologie (pas de JPA/Hibernate, pas de Spring, ...) et contiennent  les régles de gestion (pas d'_anémemic domain_).
+* Les classes du domaine ne contiennent aucune technologie (pas de JPA/Hibernate, pas de Spring, ...) et contiennent  les règles de gestion (pas d'_anémemic domain_).
 
 * Les aspects technologiques sont isolés dans des adaptateurs dédiées à chaque entrée ou sortie vers ou depuis le domaine.
 
+* Les dépendances vont toujours vers le domaine, jamais l'inverse
+
 * Les échanges entre le domaine et les adaptateurs se fait via des "ports" (en Java, des interfaces)
 
-* Ici et comme dans la plupart des architecture hexagonales, le domaine (ou "coeur" est découpés en deux couches : 
-  - la couche application qui expose des fonctionnalités 
-  - la couche domaine qui contient les entités (au sens DDD, pas au sens JPA)
+* Ici, comme souvent, le domaine métier est découpés en deux couches : 
+  - la couche application qui contient tous les contrats : ports (interfaces) et les implémentations des ports d'entréee (ou "use case") et qui servent à orchestrer les entités.
+  - la couche entités qui contient les entités (au sens DDD, pas au sens JPA). En général, classes complexes (méthodes riches, relations entre les entités,  pas de simples POJO anémiques)
 
-IMPORTANT: Qu'est ce que l'anti-pattern domaine anémique ? à quoi le reconnaît-on ? Est-il courant dans les modèles en couche classiques ?
+IMPORTANT: [Question] Qu'est ce que l'anti-pattern domaine anémique ? à quoi le reconnaît-on ? Est-il courant dans les modèles en couche classiques ? L'architecture hexagonale change-t-elle cette situation ?
 
+IMPORTANT: [Question] En observant le code, donnez les grands principes de cette architecture et les illustrer par des exemples de code.
