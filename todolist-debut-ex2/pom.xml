@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.acme</groupId>
-	<artifactId>todolist-debut-ex3</artifactId>
+	<artifactId>todolist-debut-ex2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>todolist</name>
-	<description>TP1 miage, début ex. 3</description>
+	<description>TP1 miage, début ex. 2</description>
 
 	<properties>
 		<java.version>1.8</java.version>
