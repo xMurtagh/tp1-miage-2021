@@ -22,7 +22,6 @@ WARNING: A faire impérativement *AVANT* le TP, nous n'aurons pas le temps penda
 * disposer d'une image Docker postgresql en local, faire `docker pull postgres` ;
 * un client REST (conseillés : https://insomnia.rest/[Insomnia] ou https://www.postman.com/[Postman]) ;
 * forker sur Github le projet `bflorat/tp1-miage-2020` puis cloner votre dépôt Github dans votre workspace. Attention : *un seul fork par binôme*  ;
-* importer dans Eclipse les projets `todolist-debut-ex1` et `todolist-debut-ex2`.
 
 # Déroulement du TP
 
@@ -33,15 +32,18 @@ NOTE: [Rappel sur Git] Trois dépôts sont ici utilisés: le dépot Github de l'
 NOTE: Pour importer un projet maven existant dans Eclipse, faire `File` -> `Import` -> `Import existing Maven project` et cocher le(s) projet(s) à importer.
 
 
-
 Veuillez *répondre aux questions de la feuille de TP juste sous la question* (en modifiant, commitant puis poussant le fichier `README.adoc`).
 
 Nous fournissons différents projets Eclipse servant de base de travail aux exercices suivant. Cela permet un point de synchronisation de tous les étudiants à différents moments du TP. 
 
 TIP: fermez chaque projet Eclipse (sans supprimer les sources) avant de passer à l'exercice suivant pour éviter de confondre les sources.
 
+
+
 # Exercice 1 - Etudier une API REST sans couches
 _Temps estimé : 1 h_
+
+* Importer dans Eclipse les projets `todolist-debut-ex1` et `todolist-debut-ex2`.
 
 * Observer le code du projet `todolist-debut-ex1`
 
