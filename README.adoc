@@ -22,10 +22,11 @@ WARNING: A faire impérativement *AVANT* le TP, nous n'aurons pas le temps penda
 * disposer d'une image Docker postgresql en local, faire `docker pull postgres` ;
 * un client REST (conseillés : https://insomnia.rest/[Insomnia] ou https://www.postman.com/[Postman]) ;
 * forker sur Github le projet `bflorat/tp1-miage-2020` puis cloner votre dépôt Github dans votre workspace. Attention : *un seul fork par binôme*  ;
+* Pour les étudiants désirant utiliser la connexion de l'université, il faudra configurer le proxy de l'université dans les différents outils (Docker, Git, Eclipse) *avant le TP*.
 
 # Déroulement du TP
 
-NOTE: Utiliser votre connexion Internet personnelle, pas le wifi de l'université (pour lequel il faut configurer le proxy HTTP) 
+NOTE: Il est vivement conseillé d'utiliser votre connexion Internet personnelle, pas le wifi de l'université (pour lequel il faut configurer le proxy HTTP). Les élèves désirant utiliser la connexion de l'université devront configurer le proxy dans les différents outils eux mêmes et avant le TP. 
 
 NOTE: [Rappel sur Git] Trois dépôts sont ici utilisés: le dépot Github de l'enseignant (`bflorat/tp1-miage-2020`), le dépot Github du binôme (`etudiant_x/tp1-miage-2020`), le dépot local sur le portable de l'un ou des deux étudiants du binôme.
 
