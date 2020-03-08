@@ -9,7 +9,6 @@ WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS !
 
 Commentaires éventuels des étudiants : #XXXXXX#
 
-
 ## Pré-requis 
 
 WARNING: A faire impérativement *AVANT* le TP, nous n'aurons pas le temps pendant !
@@ -19,7 +18,7 @@ WARNING: A faire impérativement *AVANT* le TP, nous n'aurons pas le temps penda
 * un JDK 8+  (conseillé : OpenJdk. Sous linux, installer le paquet `openjdk-13-jdk` par exemple) ;
 * Eclipse 2019+ installé avec le plugin 'DBeaver IDE' ;
 * un démon Docker récent 2018+ ;
-* disposer d'une image Docker postgresql en local, faire `docker pull postgres` ;
+* disposer d'une image Docker Postgresql en local, faire `docker pull postgres` ;
 * un client REST (conseillés : https://insomnia.rest/[Insomnia] ou https://www.postman.com/[Postman]) ;
 * forker sur Github le projet `bflorat/tp1-miage-2020` puis cloner votre dépôt Github dans votre workspace. Attention : *un seul fork par binôme*  ;
 * Pour les étudiants désirant utiliser la connexion de l'université, il faudra configurer le proxy de l'université dans les différents outils (Docker, Git, Eclipse) *avant le TP*.
@@ -38,7 +37,6 @@ Veuillez *répondre aux questions de la feuille de TP juste sous la question* (e
 Nous fournissons différents projets Eclipse servant de base de travail aux exercices suivant. Cela permet un point de synchronisation de tous les étudiants à différents moments du TP. 
 
 TIP: fermez chaque projet Eclipse (sans supprimer les sources) avant de passer à l'exercice suivant pour éviter de confondre les sources.
-
 
 
 # Exercice 1 - Etudier une API REST sans couches
@@ -100,8 +98,16 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 IMPORTANT: [Question] En observant le code, donnez les grands principes de cette architecture et les illustrer par des exemples de code.
 
-IMPORTANT: [Question] Avec quel pattern est implémenté ici le principe d'inversion de dépendance ? (par exemple le domaine n'a aucune dépendance directe vers l'adaptateur JPA de persistence mais pourtant, il cette dernière est appelé _in fine_). Précisez les lignes de code importantes.
+IMPORTANT: [Question] Avec quel pattern est implémenté ici le principe d'inversion de dépendance ? (par exemple le domaine n'a aucune dépendance directe vers l'adaptateur JPA de persistance mais pourtant, il cette dernière est appelé _in fine_). Précisez les lignes de code importantes.
 
 IMPORTANT: [Question] Qu'est ce que l'anti-pattern domaine anémique ? à quoi le reconnaît-on ? Est-il courant dans les modèles en couche classiques ? L'architecture hexagonale change-t-elle cette situation ?
 
-Complétez ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui renvoi un code `201` en cas de succès. La fonctionnalité à implémenter est contractualisée par le port d'entrée `AjouterTodoItems`.
+Complétez ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui renvoi un code `201` en cas de succès. La fonctionnalité à implémenter est contractualisée par le port d'entrée `AddTodoItem`.
+
+# Exercice 3 - Ecriture de tests
+_Temps estimé : 20 mins_
+
+* Rester sur le même code que l'exercice 2
+
+* 
+
