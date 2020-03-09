@@ -57,6 +57,7 @@ IMPORTANT: [Question]  Où se trouve le code métier (voir la règle de gestion 
 docker run --rm -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 IMPORTANT: [Question]  Expliquer cette ligne de commande (y compris les options utilisées)
+IMPORTANT: [Question]  Lancer les commandes `docker ps` et `ps -eaf | grep postgres`, à quoi correspondent les lignes affichées ? Que remarquez vous ?
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
