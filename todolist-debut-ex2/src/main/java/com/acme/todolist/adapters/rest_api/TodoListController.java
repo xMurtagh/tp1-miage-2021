@@ -21,17 +21,17 @@ import com.acme.todolist.domain.TodoItem;
 public class TodoListController {
 	
 	
-	private GetTodoItems getTodoItemsQueryService;
+	private GetTodoItems getTodoItemsQuery;
 	
 	
 	@Inject
-	public TodoListController(GetTodoItemsService getTodoItemsQueryService ) {
-		this.getTodoItemsQueryService = getTodoItemsQueryService;
+	public TodoListController(GetTodoItemsService getTodoItemsQuery ) {
+		this.getTodoItemsQuery = getTodoItemsQuery;
 	}
 	
 	@GetMapping("/todos")
 	public List<TodoItem> getAllTodoItems() {
-		return this.getTodoItemsQueryService.getAllTodoItems();
+		return this.getTodoItemsQuery.getAllTodoItems();
 	}
 	
 	
