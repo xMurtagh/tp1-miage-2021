@@ -16,7 +16,7 @@ WARNING: A faire impérativement *AVANT* le TP, nous n'aurons pas le temps penda
 * disposer d'au moins un compte Github par binôme ;
 * apporter au moins un portable Linux, MacOS ou Microsoft Windows par binôme ;
 * un JDK 8+  (conseillé : OpenJdk. Sous linux, installer le paquet `openjdk-13-jdk` par exemple) ;
-* Eclipse 2019+ (ou un autre IDE) installé
+* Eclipse 2019+ (ou un autre IDE Java) installé ;
 * Un client PostgreSQSL (conseillé : plugin Eclipse `DBeaver IDE`) ;
 * un démon Docker récent 2018+ ;
 * disposer d'une image Docker Postgresql en local, faire `docker pull postgres` ;
@@ -48,8 +48,6 @@ _Temps estimé : 1 h_
 * Observer le code du projet `todolist-debut-ex1`
 
 IMPORTANT: [Question]  Le code est-il structuré en couches ? Imaginez un projet d'entreprise constitué de centaines de classes ainsi structuré : que risque-t-il d'arriver ?
-
-IMPORTANT: [Question]  Que se passe-t-il si l'on renomme une colonne de la base de donnée ?
 
 IMPORTANT: [Question]  Où se trouve le code métier (voir la règle de gestion RG1) ? cette règle est-elle facilement testable par un test unitaire ? 
 
@@ -103,7 +101,12 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 IMPORTANT: [Question] Rappeler en quelques lignes les grands principes de cette architecture.
 
-Complétez ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui renvoi un code `201` en cas de succès. La fonctionnalité à implémenter est contractualisée par le port d'entrée `AddTodoItem`.
+Complétez ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
+
+* prend un `TodoItem` au format JSON dans le body (voir exemple de contenu plus haut)
+* renvoie un code `201` en cas de succès. 
+
+La fonctionnalité à implémenter est contractualisée par le port d'entrée `AddTodoItem`.
 
 # Exercice 3 - Ecriture de tests
 _Temps estimé : 20 mins_
