@@ -25,7 +25,7 @@ public class TodoListController {
 	
 	
 	@Inject
-	public TodoListController(GetTodoItemsService getTodoItemsQuery ) {
+	public TodoListController(GetTodoItems getTodoItemsQuery ) {
 		this.getTodoItemsQuery = getTodoItemsQuery;
 	}
 	
