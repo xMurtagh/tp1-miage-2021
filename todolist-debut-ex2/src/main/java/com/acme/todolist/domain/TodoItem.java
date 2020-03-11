@@ -5,7 +5,6 @@ import java.time.temporal.ChronoUnit;
 
 /**
  * Un item à faire, immuable
- * Sert à la fois d'entité JPA et de DTO (entrée/sortie des services Web)
  * 
  * @author bflorat
  *
