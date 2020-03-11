@@ -47,21 +47,19 @@ _Temps estimé : 1 h_
 
 * Observer le code du projet `todolist-debut-ex1`
 
-IMPORTANT: [Question]  Le code est-il structuré en couches ? Imaginez un projet d'entreprise constitué de centaines de classes ainsi structuré : que risque-t-il d'arriver ?
+*Le code est-il structuré en couches ? Imaginez un projet d'entreprise constitué de centaines de classes ainsi structuré : que risque-t-il d'arriver ?*
 
-IMPORTANT: [Question]  Où se trouve le code métier (voir la règle de gestion RG1) ? cette règle est-elle facilement testable par un test unitaire ? 
+*Où se trouve le code métier (voir la règle de gestion RG1) ? Cette règle est-elle facilement testable par un test unitaire ?*
 
 * Lancer une base PostgreSQL en Docker :
 ```bash
 docker run --rm -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
-IMPORTANT: [Question]  Expliquer cette ligne de commande (y compris les options utilisées)
-
-IMPORTANT: [Question]  Lancer les commandes `docker ps` et `ps -eaf | grep postgres`, à quoi correspondent les lignes affichées ? Que remarquez vous ?
+*Expliquer cette ligne de commande (y compris les options utilisées)*
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
-* IMPORTANT: [Question] Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure façon de l'injecter ? 
+*Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure façon de l'injecter ?*
 
 * Modifier le code en conséquence.
 
@@ -99,7 +97,7 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
   - la couche application qui contient tous les contrats : ports (interfaces) et les implémentations des ports d'entrée (ou "use case") et qui servent à orchestrer les entités.
   - la couche entités qui contient les entités (au sens DDD, pas au sens JPA). En général, classes complexes (méthodes riches, relations entre les entités,  pas de simples POJO anémiques)
 
-IMPORTANT: [Question] Rappeler en quelques lignes les grands principes de cette architecture.
+*Rappeler en quelques lignes les grands principes de cette architecture.*
 
 Complétez ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
@@ -115,8 +113,8 @@ _Temps estimé : 20 mins_
 
 * Implémentez (en junit) des TU sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
-IMPORTANT: [Question] Quels types de tests devra-t-on écrire pour les adapteurs ? 
+*Quels types de tests devra-t-on écrire pour les adapteurs ?* 
 
-IMPORTANT: [Question] Que teste-on dans ce cas ? 
+*Que teste-on dans ce cas ?*
 
 * S'il vous reste du temps, écrivez quelques uns de ces types de test.
