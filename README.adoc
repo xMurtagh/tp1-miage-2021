@@ -88,7 +88,7 @@ _Temps estimé : 1 h_
 * Partir du projet `todolist-debut-ex2`
 
 
-NOTE: le projet a été refactoré suivant les principes de l'architecture hexagonale : 
+NOTE: le projet a été réusiné suivant les principes de l'architecture hexagonale : 
 
 image::images/archi_hexagonale.png[]
 Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombergs]
@@ -117,4 +117,10 @@ _Temps estimé : 20 mins_
 
 *Que teste-on dans ce cas ?*
 
-* S'il vous reste du temps, écrivez quelques uns de ces types de test.
+*S'il vous reste du temps, écrivez quelques uns de ces types de test.*
+
+[TIP]
+=====
+- pour tester l'adapter REST, utilisez l'annotation `@WebMvcTest(controllers = TodoListController.class)`
+- Voir cette https://spring.io/guides/gs/testing-web/[documentation]
+=====
