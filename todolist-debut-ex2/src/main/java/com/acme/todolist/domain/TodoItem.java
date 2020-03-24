@@ -10,15 +10,14 @@ import java.time.temporal.ChronoUnit;
  *
  */
 public class TodoItem {
-	
+
 	private static final String LATE = "[LATE!] ";
-		
+
 	private String id;
-	
+
 	private Instant time;
-	
+
 	private String content;
-		
 
 	public String getId() {
 		return id;
@@ -29,39 +28,38 @@ public class TodoItem {
 	}
 
 	public String getContent() {
-		return content;
+		return this.content;
 	}
-	
+
 	/**
 	 * Constructeur vide imposé par JPA, ne pas utiliser
 	 */
-	protected TodoItem() {	}
-	
+	protected TodoItem() {
+	}
+
 	public TodoItem(String id, Instant time, String content) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.content = content;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
 		return "TodoItem [id=" + id + ", time=" + time + ", content=" + content + "]";
 	}
-	
-	private boolean isLate() {
-		return Instant.now().isAfter(getTime().plus(1, ChronoUnit.DAYS)); 
+
+	boolean isLate() {
+		return Instant.now().isAfter(getTime().plus(1, ChronoUnit.DAYS));
 	}
-	
+
 	/**
 	 * RG 1 : si l'item a plus de 24h, ajouter dans le contenu une note "[LATE!]"
 	 * 
 	 * @return liste des items
 	 */
-	String finalContent() {
-		return isLate()? LATE+getContent() :  getContent();
+	public String finalContent() {
+		return isLate() ? LATE + this.content : this.content;
 	}
 
 	@Override
@@ -88,5 +86,5 @@ public class TodoItem {
 			return false;
 		return true;
 	}
-	
+
 }
