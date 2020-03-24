@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acme.todolist.application.port.in.GetTodoItems;
-import com.acme.todolist.application.service.GetTodoItemsService;
 import com.acme.todolist.domain.TodoItem;
 
 /**
