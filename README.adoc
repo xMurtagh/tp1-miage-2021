@@ -53,7 +53,7 @@ _Temps estimé : 1 h_
 
 * Lancer une base PostgreSQL en Docker :
 ```bash
-docker run --rm -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
+docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilisées)*
 
