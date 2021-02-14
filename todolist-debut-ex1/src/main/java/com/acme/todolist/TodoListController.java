@@ -40,11 +40,6 @@ public class TodoListController {
 		// ...
 	}
 
-	/**
-	 * RG 1 : si l'item a plus de 24h, ajouter dans le contenu une note "[LATE!]"
-	 * 
-	 * @return liste des items
-	 */
 	@GetMapping("/todos")
 	public List<TodoItem> todoItems() {
 		return this.todoItemRepository.findAll().stream()
@@ -53,6 +48,11 @@ public class TodoListController {
 
 	}
 
+	/**
+	 * RG 1 : si l'item a plus de 24h, ajouter dans le contenu une note "[LATE!]"
+	 * 
+	 * @return liste des items
+	 */
 	private String finalContent(TodoItem item) {
 		return (Instant.now().isAfter(item.getTime().plus(1, ChronoUnit.DAYS))) ? 
 				LATE + item.getContent()

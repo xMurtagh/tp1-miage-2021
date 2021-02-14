@@ -2,10 +2,10 @@
 
 NOTE: TP de deux slots de 1h20
 
-## Nom des étudiants de ce binôme 
-WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS !
+## Nom des étudiants de ce monôme/binôme 
+WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
 
-#XXX# et #YYY#
+#XXX# (et #YYY#)
 
 Commentaires éventuels des étudiants : #XXXXXX#
 
@@ -13,25 +13,15 @@ Commentaires éventuels des étudiants : #XXXXXX#
 
 WARNING: A faire impérativement *AVANT* le TP, nous n'aurons pas le temps pendant !
 
-* disposer d'au moins un compte Github par binôme ;
-* apporter au moins un portable Linux, MacOS ou Microsoft Windows par binôme ;
-* un JDK 8+  (conseillé : OpenJdk. Sous linux, installer le paquet `openjdk-13-jdk` par exemple) ;
-* Eclipse 2019+ (ou un autre IDE Java) installé ;
-* Un client PostgreSQSL (conseillé : plugin Eclipse `DBeaver IDE`) ;
-* un démon Docker récent 2018+ ;
-* disposer d'une image Docker Postgresql en local, faire `docker pull postgres` ;
-* un client REST (conseillés : https://insomnia.rest/[Insomnia] ou https://www.postman.com/[Postman]) ;
-* forker sur Github le projet `bflorat/tp1-miage-2020` puis cloner votre dépôt Github dans votre workspace. Attention : *un seul fork par binôme*  ;
-* Pour les étudiants désirant utiliser la connexion de l'université, il faudra configurer le proxy de l'université dans les différents outils (Docker, Git, Eclipse) *avant le TP*.
+* Disposer d'un PC d'au moins 6 Gio de RAM avec 10 Gio de disque disponible
+* Disposer d'une version recente de VirtualBox
+* disposer d'un compte Github par personne (ou un pour deux personnes si vous êtes en binôme);
+* Forker sur Github le projet `bflorat/tp1-miage-2020` puis cloner votre dépôt Github dans votre workspace. Attention : *un seul fork par monôme/binôme*  ;
+* Télécharger l'image VirtualBox de l'environnement de développement ici (et la tester avant le TP). Le login/mot de passe est : `tp`/`tp`.
 
 # Déroulement du TP
 
-NOTE: Il est vivement conseillé d'utiliser votre connexion Internet personnelle, pas le wifi de l'université (pour lequel il faut configurer le proxy HTTP). Les élèves désirant utiliser la connexion de l'université devront configurer le proxy dans les différents outils eux mêmes et avant le TP. 
-
-NOTE: [Rappel sur Git] Trois dépôts sont ici utilisés: le dépot Github de l'enseignant (`bflorat/tp1-miage-2020`), le dépot Github du binôme (`etudiant_x/tp1-miage-2020`), le dépot local sur le portable de l'un ou des deux étudiants du binôme.
-
-NOTE: Pour importer un projet maven existant dans Eclipse, faire `File` -> `Import` -> `Import existing Maven project` et cocher le(s) projet(s) à importer.
-
+NOTE: [Rappel sur Git] Trois dépôts sont ici utilisés: le dépot Github de l'enseignant (`bflorat/tp1-miage-2021`), le dépot Github du binôme (`<x>/tp1-miage-2021`), le dépot local sur le portable de l'un ou des deux étudiants du binôme.
 
 Veuillez *répondre aux questions de la feuille de TP juste sous la question* (en modifiant, commitant puis poussant le fichier `README.adoc`).
 
@@ -45,13 +35,15 @@ _Temps estimé : 1 h_
 
 * Importer dans Eclipse les projets `todolist-debut-ex1` et `todolist-debut-ex2`.
 
+Faire `File` -> `Import` -> `Projects from Git (with smart import)` -> `Clone URI` -> URI: `https://github.com/<x>/tp1-miage-2021.git` (conserver les autres options inchangées) -> 'Import projects from File System or Archives' : ne laisser cocher que `tp1-miage-2021/tolist-debut-ex1` et `tp1-miage-2021/tolist-debut-ex2` ('import as Maven') -> Bouton 'Finish'.
+
 * Observer le code du projet `todolist-debut-ex1`
 
-*Le code est-il structuré en couches ? Imaginez un projet d'entreprise constitué de centaines de classes ainsi structuré : que risque-t-il d'arriver ?*
+*Le code est-il structuré en couches ? Quel problèmes ce code peut-il poser ?*
 
-*Où se trouve le code métier (voir la règle de gestion RG1) ? Cette règle est-elle facilement testable par un test unitaire ?*
+*Où se trouve le code métier (voir la règle de gestion RG 1) ? Cette règle est-elle facilement testable par un test unitaire ?*
 
-* Lancer une base PostgreSQL en Docker :
+* Lancer une base PostgreSQL en Docker dans un terminal (on lance ici la base en mode interactif pour visualiser son activité. Pour la lancer en tâche de fond, remplacer les options `it` par `d` comme 'daemon'):
 ```bash
 docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
@@ -68,7 +60,7 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 
 [NOTE]
 ====
-* les endpoints sont donnés dans le contrôleur via les annotation `@XYZMapping` 
+* Les URL des endpoints sont renseignés dans le contrôleur via les annotation `@XYZMapping` 
 * Exemple de contenu JSON : 
 
 ```json
@@ -80,7 +72,9 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 ====
 
-* Quand les deux endpoints fonctionnent, faire un push vers Github et fermer le projet Eclipse (ne pas le supprimer).
+NOTE: Pour lancer l'application Spring, selectionner la classe `TodolistApplication` et faire bouton droit -> 'Run as' -> 'Java Application'.
+
+* Quand les deux endpoints fonctionnent, commiter, faire un push vers Github et fermer le projet Eclipse (ne pas le supprimer).
 
 # Exercice 2 - Refactoring en architecture hexagonale
 _Temps estimé : 1 h_
