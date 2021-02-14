@@ -11,17 +11,14 @@ Commentaires éventuels des étudiants : #XXXXXX#
 
 ## Pré-requis 
 
-* Disposer d'un PC d'au moins 6 Gio de RAM avec 10 Gio de disque disponible ;
+* Disposer d'un PC d'au moins 6 Gio de RAM avec 20 Gio de disque disponible ;
 * Disposer d'une version recente de VirtualBox ;
-* disposer d'un compte Github par personne (ou un pour deux personnes si vous êtes en binôme) ;
-* Forker sur Github le projet `bflorat/tp1-miage-2020` (bouton GitHub 'Fork') puis cloner votre dépôt Github dans votre workspace. Attention : *un seul fork par monôme/binôme*  ;
-* Télécharger l'image VirtualBox de l'environnement de développement https://public.florat.net/cours_miage/vm-tp-miage.zip[ici] (la télécharger et la tester *avant le TP*). Le login/mot de passe est : `tp`/`tp`.
+* Disposer d'un compte Github par personne (ou un pour deux personnes si vous êtes en binôme) ;
+* Télécharger et décompresser l'image VirtualBox de l'environnement de développement https://public.florat.net/cours_miage/vm-tp-miage.zip[ici] (à faire *avant le TP*). Le login/mot de passe est : `tp`/`tp`.
 
 ## Déroulement du TP
 
-NOTE: [Rappel sur Git] Trois dépôts sont ici utilisés: le dépot Github de l'enseignant (`bflorat/tp1-miage-2021`), le dépot Github du binôme (`<x>/tp1-miage-2021`), le dépot local sur le portable de l'un ou des deux étudiants du binôme.
-
-Veuillez *répondre aux questions de la feuille de TP juste sous la question* (en modifiant, commitant puis poussant le fichier `README.adoc`).
+*Répondre aux questions de la feuille de TP juste sous la question* (en modifiant, commitant puis poussant le fichier `README.adoc`).
 
 Nous fournissons différents projets Eclipse servant de base de travail aux exercices suivant. Cela permet un point de synchronisation de tous les étudiants à différents moments du TP. 
 
@@ -29,11 +26,14 @@ TIP: Fermer chaque projet Eclipse (sans supprimer les sources) avant de passer �
 
 
 ### Exercice 1 - Etudier une API REST sans couches
-_Temps estimé : 1 h_
+_Temps estimé : 40 mins_
 
 * Importer dans Eclipse les projets `todolist-debut-ex1` et `todolist-debut-ex2`.
 
 Faire `File` -> `Import` -> `Projects from Git (with smart import)` -> `Clone URI` -> URI: `https://github.com/<x>/tp1-miage-2021.git` (conserver les autres options inchangées) -> 'Import projects from File System or Archives' : ne laisser cocher que `tp1-miage-2021/tolist-debut-ex1` et `tp1-miage-2021/tolist-debut-ex2` ('import as Maven') -> Bouton 'Finish'.
+
+TIP: [Rappel Git] Trois dépôts sont ici utilisés: le dépot Github de l'enseignant (`bflorat/tp1-miage-2021`), le dépot Github du binôme (`<x>/tp1-miage-2021`), le dépot local sur le portable de l'un ou des deux étudiants du binôme.
+
 
 * Observer le code du projet `todolist-debut-ex1`
 
@@ -79,10 +79,9 @@ NOTE: Pour lancer l'application Spring, selectionner la classe `TodolistApplicat
 * Vérifier avec DBeaver que les donnnées sont bien en base PostgreSQL.
 
 ### Exercice 2 - Refactoring en architecture hexagonale
-_Temps estimé : 1 h_
+_Temps estimé : 1 h 20_
 
 * Partir du projet `todolist-debut-ex2`
-
 
 NOTE: Le projet a été réusiné suivant les principes de l'architecture hexagonale : 
 
@@ -95,7 +94,7 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
 
-Complétez ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
+Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
 * prend un `TodoItem` au format JSON dans le body (voir exemple de contenu plus haut);
 * renvoie un code `201` en cas de succès. 
@@ -107,16 +106,16 @@ _Temps estimé : 20 mins_
 
 * Rester sur le même code que l'exercice 2
 
-* Implémentez (en junit) des TU sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
+* Implémenter (en junit) des TU sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
 *Quels types de tests devra-t-on écrire pour les adapteurs ?* 
 
 *Que teste-on dans ce cas ?*
 
-*S'il vous reste du temps, écrivez quelques uns de ces types de test.*
+*S'il vous reste du temps, écrire quelques uns de ces types de test.*
 
 [TIP]
 =====
-- Pour tester l'adapter REST, utilisez l'annotation `@WebMvcTest(controllers = TodoListController.class)`
+- Pour tester l'adapter REST, utiliser l'annotation `@WebMvcTest(controllers = TodoListController.class)`
 - Voir cette https://spring.io/guides/gs/testing-web/[documentation]
 =====
