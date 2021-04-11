@@ -5,7 +5,9 @@ NOTE: TP de deux slots de 1h20
 ## Nom du(des) étudiant(e)(s) de ce monôme/binôme 
 WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
 
-#XXX# (et #YYY#)
+#Priscilla Bouron
+#Alexandre Cellier
+#Matthias Meunier
 
 Commentaires éventuels des étudiants : #XXXXXX#
 
@@ -39,9 +41,18 @@ TIP: [Rappel Git] Trois dépôts sont ici utilisés: le dépot Github de l'ensei
 
 *Le code est-il structuré en couches ? Quel problèmes ce code peut-il poser ?*
 
+*Réponse :*
+* Non le code n'est-structuré en couches malgré qu'il y ai un controlleur et un DAO. Ce n'est pas suffisant car toutes les sources sont dans le même package. Les problèmes de ne pas avoir de couches sont que le maintient de l'application est beaucoup plus compliqué ainsi que la modulabilité. De plus, les tests sont quasiment impossible avec un code qui n'est pas structuré. *
+
 *Où se trouve le code métier (voir la règle de gestion RG 1) ?*
 
+*Réponse :*
+* Le code métier ce trouve dans le controlleur : "TodoListController.java". *
+
 *Cette règle est-elle facilement testable par un test unitaire ?*
+
+*Réponse*
+* Non cette règle n'est pas facilement à cause de la classe Instant. Le test unitaire ne fonctionnera pas toujours par exemple si à l'instant T, on initialise le parametre de la fonction dans le test unitaire avec une date dans une semaine. A l'instant T ça retournera TRUE et dans deux semaines ça retournera FALSE. Un test unitaireire est cense fonctionner tout le temps sans etre modifier. Pour resoudre ce probleme il faudrait faire un MOCK d'une class statique ce n'est pas une chose facile. *
 
 * Lancer une base PostgreSQL en Docker dans un terminal (on lance ici la base en mode interactif pour visualiser son activité. Pour la lancer en tâche de fond, remplacer les options `it` par `d` comme 'daemon'):
 ```bash
@@ -49,9 +60,19 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilisées)*
 
+*Réponse*
+* Cette ligne de commande permet de lancer Docker.*
+* Le parametre "-it" sert à interagir avec le conteneur. *
+* Le parametre "-e" permet de crée une variables d'environnement. *
+* Le parametre "POSTGRES_PASSWORD" permet de renseigner le mot de passe de la base postgres. *
+* Le parametre "-p" sert à spécifier le port. *
+
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
 *Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure façon de l'injecter ?*
+
+*Réponse*
+* Le fichier `todoItemRepository` est 'null' car il n'a pas été gerer par SPRING. Il faut l'injecter avec SPRING. Pour cela il faut ajouter un '@Named' devant la class en question. Ensuite, il faut ajouter un '@Injected' aux endroits ou l'on souhaite l'utiliser. *
 
 * Modifier le code en conséquence.
 
@@ -94,6 +115,9 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
 
+*Réponse*
+* L'architecture hexagonale est conçu autour d'une logique métier afin d'eviter les problèmes liés à un développement technique (Architecture en couches). Toute l'architecture gravite autour d'un domaine qui s'occupe de tous les traitements liés au metier. Il contient des ports "in" et "out" qui permettent adapteurs de communiquer avec lui. Les adapteurs s'occupent de la partie technique.  *
+
 Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
 * prend un `TodoItem` au format JSON dans le body (voir exemple de contenu plus haut);
@@ -110,7 +134,13 @@ _Temps estimé : 20 mins_
 
 *Quels types de tests devra-t-on écrire pour les adapteurs ?* 
 
+*Réponse*
+* Démarrer tout spring pour faire test integration*
+
 *Que teste-on dans ce cas ?*
+
+*Réponse*
+* Que tous les modules communiquent bien entre eux. *
 
 *S'il vous reste du temps, écrire quelques uns de ces types de test.*
 
